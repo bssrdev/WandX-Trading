@@ -1,0 +1,118 @@
+<div class="container">
+	<h1>Token Trade</h1>
+	<form (ngSubmit) = "onSubmit()" #tokentradeForm="ngForm">
+		{{diagnostic}}
+
+		<div class="form-group">
+			<label for="tokenname">Token Name</label>
+			<select class="form-control" id="tokenname" required [(ngModel)]=model.tokenname name="tokenname" #tokenname="ngModel">
+				<option *ngFor="let token of tokens">{{ token.tokenname }}</option>
+			</select>
+			<!-- <div [hidden] = "tokenname.valid || tokenname.pristine" class="alert alert-danger">Tokenname is required!</div> -->
+			<!-- <input type="text" class="form-control" id="contactaddress" required [(ngModel)]="model.contactaddress" name="contactaddress" #contactaddress = "ngModel" (keypress) = "omit_special_char($event)"> -->
+		</div>
+
+		<div class="form-group">
+			<label for="contactaddress">Contract Address</label>
+			<input type="text" class="form-control" id="contactaddress" required [(ngModel)]="model.contactaddress" name="contactaddress" #contactaddress = "ngModel" (keypress) = "omit_special_char($event)" placeholder="Contract Address to be shared here">
+			<div [hidden] = "contactaddress.valid || contactaddress.pristine" class="alert alert-danger">Contact address is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="tokenvalue">Token Value</label>
+			<input type="number" class="form-control" id="tokenvalue" required [(ngModel)]="model.tokenvalue" name="tokenvalue" #tokenvalue = "ngModel" placeholder="What amount of token value you want to bid for">
+			<div [hidden] = "tokenvalue.valid || tokenvalue.pristine" class="alert alert-danger">Minimum number is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="startdate">Start Date</label>
+			<input type="date" class="form-control" id="startdate" required [(ngModel)]="model.startdate" name="startdate" #startdate = "ngModel">
+			<div [hidden] = "startdate.valid || startdate.pristine" class="alert alert-danger">Start date is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="starttime">Start Time</label>
+			<input type="time" class="form-control" id="starttime" required [(ngModel)]="model.starttime" name="starttime" #starttime = "ngModel">
+			<div [hidden] = "starttime.valid || starttime.pristine" class="alert alert-danger">Start time is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="enddate">End Date</label>
+			<input type="date" class="form-control" id="enddate" required [(ngModel)]="model.enddate" name="enddate" #enddate = "ngModel">
+			<div [hidden] = "enddate.valid || enddate.pristine" class="alert alert-danger">End date is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="endtime">End Time</label>
+			<input type="time" class="form-control" id="endtime" required [(ngModel)]="model.endtime" name="endtime" #endtime = "ngModel">
+			<div [hidden] = "endtime.valid || endtime.pristine" class="alert alert-danger">End time is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="ethercap">Token Value</label>
+			<input type="number" class="form-control" id="ethercap" required [(ngModel)]="model.ethercap" name="ethercap" #ethercap = "ngModel">
+			<div [hidden] = "ethercap.valid || ethercap.pristine" class="alert alert-danger">Minimum number is required!</div>
+		</div>
+
+		<!-- All adding new Bonus activities -->
+
+		<!-- <div formArrayName="bonusPercentage" class="well well-lg">
+			<div *ngFor="let bonus of bonusPercentage.controls; let i=index" [formGroupName]="i">
+				<h5>Bonus #{i+1}</h5>
+				<div style="margin-left: 1em;">
+					<div class="form-group">
+						<label class="center-block">Bonus in Percentage:
+							<input class="form-control" formControlName="bonuspercentage">
+						</label>
+					</div>
+					<div class="form-group">
+						<label class="center-block">Bonus Time:
+							<input class="form-control" formControlName="bonuspercentage">
+						</label>
+					</div>
+					<div class="form-group">
+						<label class="center-block">Bonus Date:
+							<input class="form-control" formControlName="bonuspercentage">
+						</label>
+					</div>
+				</div>
+			</div>
+			<button (click)="addBonus()" type="button">Add Bonus Percentage</button>
+		</div> -->
+
+<!-- 		<div formArrayName="bonustokens" class="well well-lg">
+			<div *ngFor="let bonus of bonustokens.controls; let i = index" [formGroupName] ="i">
+				<h5>Bonus#{{i+1}}</h5>
+				<div style="margin-left: 1em;">
+					<div class="form-group">
+						<label class="center-block">Bonus in Percentage:
+							<input class="form-control" formControlName="percentage">
+						</label>
+					</div>
+					<div class="form-group">
+						<label class="center-block">Bonus Time:
+							<input class="form-control" formControlName="bonustime">
+						</label>
+					</div>
+					<div class="form-group">
+						<label class="center-block">Bonus Date:
+							<input class="form-control" formControlName="bonusdate">
+						</label>
+					</div>
+				</div>
+			</div>
+			<button type="button">Add New Bonus</button>
+			<button type="button">Delete Bonus</button>
+		</div> -->
+
+
+		<!-- All submit activities -->
+
+		<button type="submit" class="btn btn-success" [disabled] = "!tokentradeForm.form.valid">Submit</button>
+		<button type="button" class="btn btn-success" (click) = "newTokentrade(); tokentradeForm.reset()">New Token</button>
+		<!-- <button type="button" class="btn btn-default" (click) = "newCreatetoken(); createtokenForm.reset()">Reset Token</button> -->
+
+	</form>
+</div>
+
+

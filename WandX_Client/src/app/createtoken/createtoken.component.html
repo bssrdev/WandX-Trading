@@ -1,0 +1,160 @@
+<div class="container">
+	<h1>Create Token</h1>
+	<br>
+	<form (ngSubmit) = "onSubmit()" #createtokenForm="ngForm">
+		{{diagnostic}}
+
+		<!-->Remember to add Placeholder if possible instead of default value.</-->
+		<div class="form-group">
+			<label for="tokenname">Token Name</label>
+			<input type="text" class="form-control" id="tokenname" required [(ngModel)]="model.tokenname" name="tokenname" #tokenname = "ngModel" (keypress) = "omit_special_char($event)" placeholder="WandX">
+			<div [hidden] = "tokenname.valid || tokenname.pristine" class="alert alert-danger">Token name is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="tokensymbol">Token Symbol</label>
+			<input type="text" class="form-control" id="tokensymbol" required [(ngModel)]="model.tokensymbol" name="tokensymbol" #tokensymbol = "ngModel" minlength="3" placeholder="WAND">
+			<div [hidden] = "tokensymbol.valid || tokensymbol.pristine" class="alert alert-danger">Token symbol of minimum 3 letters is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="decimals">Decimals</label>
+			<input type="number" class="form-control" id="decimals" required [(ngModel)]="model.decimals" name="decimals" #decimals = "ngModel" (keypress) = "take_special_char($event)" min=0 max=18 placeholder="Decimals can be only from 0 to 18">
+			<div [hidden] = "decimals.valid || decimals.pristine" class="alert alert-danger">Decimal is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="totalsupply">Total Supply</label>
+			<input type="number" class="form-control" id="totalsupply" required [(ngModel)]="model.totalsupply" name="totalsupply" #totalsupply = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Total Supply of tokens">
+			<div [hidden] = "totalsupply.valid || totalsupply.pristine" class="alert alert-danger">Total supply is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="tokenadvisorvesting">Tokens for advisor vesting</label>
+			<input type="number" class="form-control" id="tokenadvisorvesting" required [(ngModel)]="model.tokenadvisorvesting" name="tokenadvisorvesting" #tokenadvisorvesting = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Tokens count for Advisor Vesting">
+			<div [hidden] = "tokenadvisorvesting.valid || tokenadvisorvesting.pristine" class="alert alert-danger">Tokens for advisor vesting is required!</div>
+		</div>
+
+		<div class="form-group">
+			<label for="tokenteamvesting">Tokens for team vesting</label>
+			<input type="number" class="form-control" id="tokenteamvesting" required [(ngModel)]="model.tokenteamvesting" name="tokenteamvesting" #tokenteamvesting = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Tokens count for Team Vesting">
+			<div [hidden] = "tokenteamvesting.valid || tokenteamvesting.pristine" class="alert alert-danger">Tokens for team vesting is required!</div>
+		</div>
+
+		<button type="submit" class="btn btn-success" [disabled] = "!createtokenForm.form.valid" (click)="add(tokenname.value); createtokenForm.reset()">Submit <span id="tooltiptext">Please fill the complete form to submit the details.</span> </button>
+		<!-- <button type="button" class="btn btn-success" (click) = "newCreatetoken(); createtokenForm.reset()">New Token</button> -->
+		<!-- <button type="button" class="btn btn-default" (click) = "newCreatetoken(); createtokenForm.reset()">Reset Token</button> -->
+	</form>
+</div>
+<br>
+<br>
+<div class="container">
+	<h1>Existing Tokens</h1>
+	<br>
+	<table class="table table-condensed table-bordered table-striped">
+		<tr>
+      		<th>Token Name</th>
+      		<th>Token Symbol</th>
+      		<th>Decimals</th>
+      		<th>Total Supply</th>
+      		<th>Token Advisor Vesting</th>
+      		<th>Token Team Vesting</th>
+      		<th>Delete Token</th>
+   		</tr>
+		<tr *ngFor="let token of tokens">
+        	<td align="center">
+            	{{ token.tokenname }}</td>
+        	<td align="center">
+            	{{ token.tokensymbol }}</td>
+            <td align="center">
+            	{{ token.decimals }}</td>
+            <td align="center">
+            	{{ token.totalsupply }}</td>
+            <td align="center">
+            	{{ token.tokenadvisorvesting }}</td>
+            <td align="center">
+            	{{ token.tokenteamvesting }}</td>
+            <td align="center">
+            	<button type="button" class="btn btn-danger" (click)="delete(token)" align="center">Delete</button>
+            </td>
+    	</tr>
+	</table>
+</div>
+<br>
+<br>
+<br>
+
+<!-- New Form -->
+<!-- 
+<div class="container">
+	<div [hidden]="submitted">
+		<h1>Create Token</h1>
+		<form>
+			<div class="form-group">
+				<label for="tokenname">Token Name</label>
+				<input type="text" class="form-control" id="tokenname" #tokenname name="tokenname"> -->
+				<!-- <div [hidden]="tokenname.valid || tokenname.pristine" class="alert alert-danger">Token Name is required
+        		</div> -->
+			<!-- </div>
+			<div class="form-group">
+				<label for="tokenname">Token Name</label>
+				<input type="text" class="form-control" id="tokenname" #tokenname name="tokenname"> -->
+				<!-- <div [hidden]="tokenname.valid || tokenname.pristine" class="alert alert-danger">Token Name is required
+        		</div> -->
+<!-- 			</div>
+
+		</form>
+	</div>
+</div> -->
+
+<!-- <ul class="tokens"> -->
+	<!-- <input #tokenname /> -->
+<!-- 	<button (click)="add(tokenname.value); tokenname.value=''">
+    add
+  </button> -->
+<!--   <li *ngFor="let token of tokens">
+    {{ token.tokenname }}
+    <button class="delete" title="delete hero"
+    (click)="delete(token)">x</button>
+  </li>
+</ul> -->
+
+<!-- <form #regForm="ngForm">
+	<div class="container" *ngIf="editToken">
+ 		<h3>{{FormHeader}}</h3>
+  		<table class="table table-condensed">
+    		<tbody>
+      			<tr>
+        			<td>Token Name</td>
+        			<td><input type="text" name="tokenname" [(ngModel)] ></td>
+      			</tr>
+      			<tr>
+        			<td>Token Symbol</td>
+        			<td><input type="text" name="tokensymbol" [(ngModel)]></td>
+      			</tr>
+      			<tr>
+        			<td>Decimals</td>
+        			<td><input type="text" name="decimals" [(ngModel)]></td>
+      			</tr>
+      			<tr>
+        			<td>Total Supply</td>
+        			<td><input type="text" name="totalsupply" [(ngModel)]></td>
+      			</tr>
+      			<tr>
+        			<td>Token Advisor Vesting</td>
+        			<td><input type="text" name="tokenadvisorvesting" [(ngModel)]></td>
+      			</tr>
+      			<tr>
+        			<td>Token Team Vesting</td>
+        			<td><input type="text" name="tokenteamvesting" [(ngModel)]></td>
+      			</tr>
+      			<tr>
+        			<td><input type="hidden" name="id" [(ngModel)]></td>
+        			<td><input type="button" value="Save" (click)="Save(regForm)"></td>
+      			</tr>
+    		</tbody>
+  		</table>
+ 	</div>
+</form> -->
+
+
