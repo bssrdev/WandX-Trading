@@ -28,18 +28,53 @@
 			<input type="number" class="form-control" id="totalsupply" required [(ngModel)]="model.totalsupply" name="totalsupply" #totalsupply = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Total Supply of tokens">
 			<div [hidden] = "totalsupply.valid || totalsupply.pristine" class="alert alert-danger">Total supply is required!</div>
 		</div>
+    <br>
+    <h5 style="color: red;">*Please note that sum of advisor vesting and team vesting tokens is less than the total supply</h5>
+    <br>
+    <div class="row">
+      <div class="form-group col-lg-3">
+        <label for="tokenadvisorvesting">Tokens for advisor vesting</label>
+        <input type="number" class="form-control" id="tokenadvisorvesting" required [(ngModel)]="model.tokenadvisorvesting" name="tokenadvisorvesting" #tokenadvisorvesting = "ngModel" (keypress) = "omit_special_char($event);ta($event)" min=0 placeholder="Tokens count for Advisor Vesting">
+        <div [hidden] = "tokenadvisorvesting.valid || tokenadvisorvesting.pristine" class="alert alert-danger">Tokens for advisor vesting is required!</div>
+      </div>
 
-		<div class="form-group">
+      <div class="form-group col-lg-9">
+        <label for="tokenadvisoraddress">Advisor Wallet Address</label>
+        <input type="text" class="form-control" id="tokenadvisoraddress" required [(ngModel)]="model.tokenadvisoraddress" name="tokenadvisoraddress" #tokenadvisoraddress = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Advisor Wallet Address">
+        <div [hidden] = "tokenadvisoraddress.valid || tokenadvisoraddress.pristine" class="alert alert-danger">Advisor Wallet Address is required!</div>
+      </div>
+    </div>
+
+		<!-- <div class="form-group col-lg-3">
 			<label for="tokenadvisorvesting">Tokens for advisor vesting</label>
 			<input type="number" class="form-control" id="tokenadvisorvesting" required [(ngModel)]="model.tokenadvisorvesting" name="tokenadvisorvesting" #tokenadvisorvesting = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Tokens count for Advisor Vesting">
 			<div [hidden] = "tokenadvisorvesting.valid || tokenadvisorvesting.pristine" class="alert alert-danger">Tokens for advisor vesting is required!</div>
 		</div>
 
-		<div class="form-group">
+    <div class="form-group col-lg-9">
+      <label for="tokenadvisoraddress">Advisor Wallet Address</label>
+      <input type="number" class="form-control" id="tokenadvisoraddress" required [(ngModel)]="model.tokenadvisoraddress" name="tokenadvisoraddress" #tokenadvisoraddress = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Advisor Wallet Address">
+      <div [hidden] = "tokenadvisoraddress.valid || tokenadvisoraddress.pristine" class="alert alert-danger">Advisor Wallet Address is required!</div>
+    </div> -->
+
+    <div class="row">
+      <div class="form-group col-lg-3">
+        <label for="tokenteamvesting">Tokens for team vesting</label>
+        <input type="number" class="form-control" id="tokenteamvesting" required [(ngModel)]="model.tokenteamvesting" name="tokenteamvesting" #tokenteamvesting = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Tokens count for Team Vesting" min="0">
+        <div [hidden] = "tokenteamvesting.valid || tokenteamvesting.pristine" class="alert alert-danger">Tokens for team vesting is required!</div>
+      </div>
+      <div class="form-group col-lg-9">
+        <label for="tokenteamaddress">Team Wallet Address</label>
+        <input type="text" class="form-control" id="tokenteamaddress" required [(ngModel)]="model.tokenteamaddress" name="tokenteamaddress" #tokenteamaddress = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Advisor Wallet Address">
+        <div [hidden] = "tokenteamaddress.valid || tokenteamaddress.pristine" class="alert alert-danger">Team Wallet Address is required!</div>
+      </div>
+    </div>
+
+<!-- 		<div class="form-group">
 			<label for="tokenteamvesting">Tokens for team vesting</label>
 			<input type="number" class="form-control" id="tokenteamvesting" required [(ngModel)]="model.tokenteamvesting" name="tokenteamvesting" #tokenteamvesting = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Tokens count for Team Vesting">
 			<div [hidden] = "tokenteamvesting.valid || tokenteamvesting.pristine" class="alert alert-danger">Tokens for team vesting is required!</div>
-		</div>
+		</div> -->
 
 		<button type="submit" class="btn btn-success" [disabled] = "!createtokenForm.form.valid" (click)="add(tokenname.value); update(tokenname.value); createtokenForm.reset()">Submit <span id="tooltiptext">Please fill the complete form to submit the details.</span> </button>
 		<!-- <button type="button" class="btn btn-success" (click) = "newCreatetoken(); createtokenForm.reset()">New Token</button> -->

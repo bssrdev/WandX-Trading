@@ -25,6 +25,8 @@ export class Createtoken{
 	public decimals: string,
 	public totalsupply: string,
 	public tokenadvisorvesting: string,
+	public tokenadvisoraddress: string,
 	public tokenteamvesting: string,
+	public tokenteamaddress: string,
 	){ }
 }

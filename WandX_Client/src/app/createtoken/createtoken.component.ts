@@ -75,7 +75,7 @@ export class CreatetokenComponent implements OnInit {
     }
   }
 
-  model = new Createtoken(' ','', '','','','','');
+  model = new Createtoken('','','','', '','','','','');
   submitted = false;
   onSubmit() { this.submitted = true;}
 

@@ -23,7 +23,9 @@ router.post('/createtoken',(req, res, next)=>{
 		// decimals: req.body.decimals,
 		// totalsupply: req.body.totalsupply,
 		// tokenadvisorvesting: req.body.tokenadvisorvesting,
-		// tokenteamvesting: req.body.tokenteamvesting
+		// tokenadvisoraddress: req.body.tokenadvisoraddress,
+		// tokenteamvesting: req.body.tokenteamvesting,
+		// tokenteamaddress: req.body.tokenteamaddress
 	});
 
 	newCreatetoken.save((err,createtoken)=>{

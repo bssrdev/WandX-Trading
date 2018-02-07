@@ -23,6 +23,8 @@ import { SinginComponent } from './singin/singin.component';
 import { CrowdsaleComponent } from './crowdsale/crowdsale.component';
 
 
+
+
 // Configs for Authentication
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
