@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { CreatetokenComponent } from './createtoken/createtoken.component';
 import { TokentradeComponent } from './tokentrade/tokentrade.component';
 import { SinginComponent } from './singin/singin.component';
+import { CrowdsaleComponent } from './crowdsale/crowdsale.component';
 
 
 // Configs for Authentication
@@ -47,7 +48,8 @@ export function getAuthServiceConfigs() {
     AppComponent,
     CreatetokenComponent,
     TokentradeComponent,
-    SinginComponent
+    SinginComponent,
+    CrowdsaleComponent
   ],
   imports: [
     BrowserModule,

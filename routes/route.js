@@ -18,12 +18,12 @@ router.get('/createtokens',(req, res, next)=>{
 router.post('/createtoken',(req, res, next)=>{
 	//logic for creating a token
 	let newCreatetoken = new Createtoken({
-		tokenname: req.body.tokenname,
-		tokensymbol: req.body.tokensymbol,
-		decimals: req.body.decimals,
-		totalsupply: req.body.totalsupply,
-		tokenadvisorvesting: req.body.tokenadvisorvesting,
-		tokenteamvesting: req.body.tokenteamvesting
+		tokenname: req.body.tokenname
+		// tokensymbol: req.body.tokensymbol,
+		// decimals: req.body.decimals,
+		// totalsupply: req.body.totalsupply,
+		// tokenadvisorvesting: req.body.tokenadvisorvesting,
+		// tokenteamvesting: req.body.tokenteamvesting
 	});
 
 	newCreatetoken.save((err,createtoken)=>{

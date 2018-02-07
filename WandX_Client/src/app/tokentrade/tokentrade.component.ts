@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 import { Createtoken } from '../createtoken';
-import { Tokentrade } from '../createtoken';
+import { Tokentrade } from '../tokentrade';
 import { FormControl } from '@angular/forms';
 import { CreatetokenService } from '../createtoken.service';
 
@@ -50,3 +50,23 @@ export class TokentradeComponent implements OnInit {
   }
 
 }
+
+
+// export class CreatetokenComponent implements OnInit {
+
+//   tokens: Createtoken[];
+
+//   constructor(private createtokenService: CreatetokenService) { }
+
+//   model = new Tokentrade('','','','','','','','');
+
+  
+//   ngOnInit() {
+//     this.getTokens();
+//   }
+
+//   getTokens(): void{
+//     this.createtokenService.getTokens()
+//       .subscribe(tokens=>this.tokens=tokens);
+//   }
+// }

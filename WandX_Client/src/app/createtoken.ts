@@ -28,36 +28,3 @@ export class Createtoken{
 	public tokenteamvesting: string,
 	){ }
 }
-
-
-export class Tokentrade {
-	
-	constructor(
-		public tokenname: string,
-		public contactaddress: string,
-		public tokenvalue: string,
-		public startdate: string,
-		public starttime: string,
-		public enddate: string,
-		public endtime: string,
-		public ethercap: string
-		){ }
-}
-
-// export class Bonustrade {
-// 	constructor(
-// 		public id: 0,
-// 		public name: '',
-// 		public bonusvalues: Bonusvalues[],
-// 		){ }
-// }
-
-
-// export class Bonusvalues {
-
-// 	constructor(
-// 		public bonuspercentage: string,
-// 		public starttime: string,
-// 		public startdate: string
-// 		){ }
-// }

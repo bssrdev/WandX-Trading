@@ -14,7 +14,7 @@ import { of } from 'rxjs/observable/of';
 // import 'rxjs/add/operator/filter';
 // import 'rxjs/add/operator/map';
 
-import { Createtoken } from './createtoken';
+import { Tokentrade } from './tokentrade';
 import { HttpErrorHandler, HandleError } from './http-error-handler.service';
 
 const httpOptions = {
@@ -26,32 +26,30 @@ const httpOptions = {
 
 
 @Injectable()
-export class CreatetokenService {
+export class TokentradeService {
 
   constructor(
-    private http: HttpClient,
+  	private http: HttpClient,
     httpErrorHandler: HttpErrorHandler) {
-    this.handleError = httpErrorHandler.createHandleError('CreatetokenService');
-  }
+    this.handleError = httpErrorHandler.createHandleError('TokentradeService');
+  	}
 
-  CreatetokenUrl = 'http://localhost:3000/api/createtokens';
-  CreatetokensUrl = 'http://localhost:3000/api/createtoken';
-  private handleError: HandleError;
+	TokentradeUrl = 'http://localhost:3000/api/tokentrades';
+  	TokentradesUrl = 'http://localhost:3000/api/tokentrade';
+  	private handleError: HandleError;
 
+  	//Getting the token details from the server : GET from Server
 
+  	getTokens(): Observable<Tokentrade[]>{
+  		return this.http.get<Tokentrade[]>(this.TokentradeUrl)
+  			.pipe(
+  				catchError(this.handleError('getTokens',[]))
+  				);
+  	}
 
-  //Getting the token details from the server : GET from Server
+  	//Adding the token to database : POST to database
 
-  getTokens(): Observable<Createtoken[]>{
-  	return this.http.get<Createtoken[]>(this.CreatetokenUrl)
-  		.pipe(
-  			catchError(this.handleError('getTokens',[]))
-  			);
-  }
-
-  //Adding the token to database : POST to database
-
-  addToken (token:Createtoken): Observable<Createtoken> {
+  addToken (token:Tokentrade): Observable<Tokentrade> {
     // var body={
     //   tokenname: token.tokenname,
     //   tokensymbol: token.tokensymbol,
@@ -60,7 +58,7 @@ export class CreatetokenService {
     //   tokenadvisorvesting: token.tokenadvisorvesting,
     //   tokenteamvesting: token.tokenteamvesting
     // }
-  	return this.http.post<Createtoken>(this.CreatetokensUrl, token, httpOptions)
+  	return this.http.post<Tokentrade>(this.TokentradesUrl, token, httpOptions)
   		.pipe(
   			catchError(this.handleError('addToken',token))
   			);
@@ -68,33 +66,18 @@ export class CreatetokenService {
 
   //Update token on the server : PUT the token on the server
 
-  updateToken (token:Createtoken): Observable<Createtoken> {
+  updateToken (token:Tokentrade): Observable<Tokentrade> {
   	httpOptions.headers =
       httpOptions.headers.set('Authorization', 'my-new-auth-token');
 
-    return this.http.put<Createtoken>(this.CreatetokenUrl, token, httpOptions)
+    return this.http.put<Tokentrade>(this.TokentradeUrl, token, httpOptions)
       .pipe(
         catchError(this.handleError('updateToken', token))
       );
   }
 
   //Editing the Token
-  editToken(token:Createtoken): Observable<Createtoken> {
-    const params = new HttpParams().set('ID', token._id);
-    var body={
-      tokenname: token.tokenname,
-      tokensymbol: token.tokensymbol,
-      decimals: token.decimals,
-      totalsupply: token.totalsupply,
-      tokenadvisorvesting: token.tokenadvisorvesting,
-      tokenteamvesting: token.tokenteamvesting,
-      ID: token._id
-    }
-    return this.http.put<Createtoken>(this.CreatetokenUrl +'/'+ token._id, body, httpOptions)
-  }
-
-  //Deleting Token
-  // deleteToken(token:Createtoken): Observable<Createtoken> {
+  // editToken(token:Tokentrade): Observable<Tokentrade> {
   //   const params = new HttpParams().set('ID', token._id);
   //   var body={
   //     tokenname: token.tokenname,
@@ -105,11 +88,13 @@ export class CreatetokenService {
   //     tokenteamvesting: token.tokenteamvesting,
   //     ID: token._id
   //   }
-  //   return this.http.delete<Createtoken>(this.CreatetokensUrl +'/'+ token._id)
+  //   return this.http.put<Tokentrade>(this.TokentradeUrl +'/'+ token._id, body, httpOptions)
   // }
 
+  // Deleting the token from database
+
   deleteToken(_id:any): Observable<{}> {
-    const url = `${this.CreatetokensUrl}/${_id}`;
+    const url = `${this.TokentradesUrl}/${_id}`;
     //const params = new HttpParams().set('ID', token._id);
     // var body={
     //   tokenname: token.tokenname,
