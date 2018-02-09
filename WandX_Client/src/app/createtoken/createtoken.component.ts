@@ -17,6 +17,9 @@ export class CreatetokenComponent implements OnInit {
 
   constructor(private createtokenService: CreatetokenService) { }
 
+  //Page loader activity
+  showSpinner: boolean = true;
+
   ngOnInit() {
     this.getTokens();
   }
@@ -24,6 +27,9 @@ export class CreatetokenComponent implements OnInit {
   getTokens(): void{
     this.createtokenService.getTokens()
       .subscribe(tokens=>this.tokens=tokens);
+    //Show Spinner on loading
+    this.createtokenService.getTokens()
+      .subscribe(()=>this.showSpinner = false);
   }
 
   edit(token) {

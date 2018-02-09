@@ -21,6 +21,7 @@ import { CreatetokenComponent } from './createtoken/createtoken.component';
 import { TokentradeComponent } from './tokentrade/tokentrade.component';
 import { SinginComponent } from './singin/singin.component';
 import { CrowdsaleComponent } from './crowdsale/crowdsale.component';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 
 
 
@@ -51,7 +52,8 @@ export function getAuthServiceConfigs() {
     CreatetokenComponent,
     TokentradeComponent,
     SinginComponent,
-    CrowdsaleComponent
+    CrowdsaleComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
