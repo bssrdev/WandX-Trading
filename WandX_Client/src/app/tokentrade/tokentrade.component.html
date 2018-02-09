@@ -24,7 +24,21 @@
 			<div [hidden] = "tokenvalue.valid || tokenvalue.pristine" class="alert alert-danger">Minimum number is required!</div>
 		</div>
 
-		<div class="form-group">
+		<div class="row">
+			<div class="form-group col-lg-6">
+				<label for="startdate">Start Date</label>
+				<input type="date" class="form-control" id="startdate" required [(ngModel)]="model.startdate" name="startdate" #startdate = "ngModel" min="today | date">
+				<!-- <div [hidden] = "startdate.valid || startdate.pristine" class="alert alert-danger">Start date is required!</div> -->
+			</div>
+
+			<div class="form-group col-lg-6">
+				<label for="starttime">Start Time</label>
+				<input type="time" class="form-control" id="starttime" required [(ngModel)]="model.starttime" name="starttime" #starttime = "ngModel">
+				<div [hidden] = "starttime.valid || starttime.pristine" class="alert alert-danger">Start time is required!</div>
+			</div>
+		</div>
+
+		<!-- <div class="form-group">
 			<label for="startdate">Start Date</label>
 			<input type="date" class="form-control" id="startdate" required [(ngModel)]="model.startdate" name="startdate" #startdate = "ngModel">
 			<div [hidden] = "startdate.valid || startdate.pristine" class="alert alert-danger">Start date is required!</div>
@@ -34,9 +48,23 @@
 			<label for="starttime">Start Time</label>
 			<input type="time" class="form-control" id="starttime" required [(ngModel)]="model.starttime" name="starttime" #starttime = "ngModel">
 			<div [hidden] = "starttime.valid || starttime.pristine" class="alert alert-danger">Start time is required!</div>
+		</div> -->
+
+		<div class="row">
+			<div class="form-group col-lg-6">
+				<label for="enddate">End Date</label>
+				<input type="date" class="form-control" id="enddate" required [(ngModel)]="model.enddate" name="enddate" #enddate = "ngModel">
+				<div [hidden] = "enddate.valid || enddate.pristine" class="alert alert-danger">End date is required!</div>
+			</div>
+
+			<div class="form-group col-lg-6">
+				<label for="endtime">End Time</label>
+				<input type="time" class="form-control" id="endtime" required [(ngModel)]="model.endtime" name="endtime" #endtime = "ngModel">
+				<div [hidden] = "endtime.valid || endtime.pristine" class="alert alert-danger">End time is required!</div>
+			</div>
 		</div>
 
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label for="enddate">End Date</label>
 			<input type="date" class="form-control" id="enddate" required [(ngModel)]="model.enddate" name="enddate" #enddate = "ngModel">
 			<div [hidden] = "enddate.valid || enddate.pristine" class="alert alert-danger">End date is required!</div>
@@ -46,13 +74,13 @@
 			<label for="endtime">End Time</label>
 			<input type="time" class="form-control" id="endtime" required [(ngModel)]="model.endtime" name="endtime" #endtime = "ngModel">
 			<div [hidden] = "endtime.valid || endtime.pristine" class="alert alert-danger">End time is required!</div>
-		</div>
+		</div> -->
 
-		<div class="form-group">
+<!-- 		<div class="form-group">
 			<label for="ethercap">Token Value</label>
 			<input type="number" class="form-control" id="ethercap" required [(ngModel)]="model.ethercap" name="ethercap" #ethercap = "ngModel">
 			<div [hidden] = "ethercap.valid || ethercap.pristine" class="alert alert-danger">Minimum number is required!</div>
-		</div>
+		</div> -->
 
 		<!-- All adding new Bonus activities -->
 
@@ -109,10 +137,14 @@
 		<!-- All submit activities -->
 
 		<button type="submit" class="btn btn-success" [disabled] = "!tokentradeForm.form.valid">Submit</button>
-		<button type="button" class="btn btn-success" (click) = "newTokentrade(); tokentradeForm.reset()">New Token</button>
+<!-- 		<button type="button" class="btn btn-success" (click) = "newTokentrade(); tokentradeForm.reset()">New Token</button> -->
 		<!-- <button type="button" class="btn btn-default" (click) = "newCreatetoken(); createtokenForm.reset()">Reset Token</button> -->
 
 	</form>
+	<hr>
 </div>
+<!-- <div class="container">
+	<h1>Bonus Section</h1>
+</div> -->
 
 

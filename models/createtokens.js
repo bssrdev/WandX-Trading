@@ -21,15 +21,7 @@ const CreatetokenSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	tokenadvisoraddress:{
-		type: String,
-		required: true
-	},
 	tokenteamvesting:{
-		type: String,
-		required: true
-	},
-	tokenteamaddress:{
 		type: String,
 		required: true
 	}
