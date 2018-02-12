@@ -55,17 +55,28 @@ export class CreatetokenComponent implements OnInit {
     */
   }
 
-  //add(name: string)
+  //add(name: string) ---> Older Code
 
-  add(tokenname: string,): void {
+  // add(tokenname: string,): void {
+  //   this.editCreatetoken = undefined;
+  //   tokenname = tokenname.trim();
+  //   if (!tokenname) { return; }
+
+  //   // The server will generate the id for this new token
+  //   const newToken: Createtoken = { tokenname } as Createtoken;
+  //   this.createtokenService.addToken(newToken)
+  //     .subscribe(token => this.tokens.push(token));
+  // }
+
+   //add(name: string)(multiple values)----> New Code
+
+    add(tokenname: string,tokensymbol: string,decimals: string,totalsupply: string,tokenadvisorvesting: string,tokenteamvesting: string,): void {
     this.editCreatetoken = undefined;
-    tokenname = tokenname.trim();
-    if (!tokenname) { return; }
 
     // The server will generate the id for this new token
-    const newToken: Createtoken = { tokenname } as Createtoken;
+    const newToken: Createtoken = { tokenname,tokensymbol,decimals,totalsupply,tokenadvisorvesting,tokenteamvesting } as Createtoken;
     this.createtokenService.addToken(newToken)
-      .subscribe(token => this.tokens.push(token));
+      .subscribe(token => {this.tokens.push(token); this.getTokens()}); // this.getTokens() is refreshing my get tokens api
   }
 
   // Update Tokens
@@ -82,6 +93,7 @@ export class CreatetokenComponent implements OnInit {
   }
 
   model = new Createtoken('','','','', '','','','','');
+  
   submitted = false;
   onSubmit() { this.submitted = true;}
 

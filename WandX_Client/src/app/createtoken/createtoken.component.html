@@ -76,7 +76,7 @@
 			<div [hidden] = "tokenteamvesting.valid || tokenteamvesting.pristine" class="alert alert-danger">Tokens for team vesting is required!</div>
 		</div> -->
 
-		<button type="submit" class="btn btn-success" [disabled] = "!createtokenForm.form.valid" (click)="add(tokenname.value); update(tokenname.value); createtokenForm.reset()">Submit<span id="tooltiptext">Please fill the complete form to submit the details.</span> </button>
+		<button type="submit" class="btn btn-success" [disabled] = "!createtokenForm.form.valid" (click)="add(tokenname.value,tokensymbol.value,decimals.value,totalsupply.value,tokenadvisorvesting.value,tokenteamvesting.value); createtokenForm.reset()">Submit<span id="tooltiptext">Please fill the complete form to submit the details.</span> </button>
 		<!-- <button type="button" class="btn btn-success" (click) = "newCreatetoken(); createtokenForm.reset()">New Token</button> -->
 		<!-- <button type="button" class="btn btn-default" (click) = "newCreatetoken(); createtokenForm.reset()">Reset Token</button> -->
 	</form>
@@ -102,17 +102,17 @@
             	{{ token.tokenname }}</td>
         	<td align="center">
             	{{ token.tokensymbol }}</td>
-            <td align="center">
+          <td align="center">
             	{{ token.decimals }}</td>
-            <td align="center">
+          <td align="center">
             	{{ token.totalsupply }}</td>
-            <td align="center">
+          <td align="center">
             	{{ token.tokenadvisorvesting }}</td>
-            <td align="center">
+          <td align="center">
             	{{ token.tokenteamvesting }}</td>
-            <td align="center">
+          <td align="center">
             	<button type="button" class="btn btn-danger" (click)="delete(token)" align="center">Delete</button>
-            </td>
+          </td>
     	</tr>
 	</table>
 </div>
