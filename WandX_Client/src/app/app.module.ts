@@ -22,6 +22,9 @@ import { TokentradeComponent } from './tokentrade/tokentrade.component';
 import { SinginComponent } from './singin/singin.component';
 import { CrowdsaleComponent } from './crowdsale/crowdsale.component';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 
@@ -53,7 +56,10 @@ export function getAuthServiceConfigs() {
     TokentradeComponent,
     SinginComponent,
     CrowdsaleComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
