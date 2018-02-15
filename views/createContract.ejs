@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contract Form</title>
+  <script src="js/web3.min.js"></script>
+</head>
+
+<body>
+
+    Contract created check metamask popup.
+    <script>
+
+    var bytecode =<%-JSON.stringify(bytecode)%>
+    var abi =<%-JSON.stringify(abi)%>
+    var contractCode =<%-JSON.stringify(contract)%>
+    console.log(bytecode);
+    console.log(abi);
+    console.log(contractCode);
+
+web3.version.getNetwork((err, netId) => {
+  switch (netId) {
+    case "1":
+      console.log('This is mainnet')
+      alert('warning u r on mainnet');
+      break
+    case "2":
+      console.log('This is the deprecated Morden test network.')
+      break
+    case "3":
+      console.log('This is the ropsten test network.')
+      break
+    default:
+      console.log('This is an unknown network.')
+  }
+});
+
+    if (typeof web3 !== 'undefined') {
+       web3 = new Web3(web3.currentProvider);
+    } else {
+       // set the provider you want from Web3.providers
+       web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    }
+
+    var contract = web3.eth.contract(abi);
+    var alerted = false;
+    var uploaded = false;
+
+    setInterval(function() {
+     web3.eth.getAccounts((error, accounts) => {
+      console.log("acc a: "+ accounts[0]);
+      
+      if (web3.eth.accounts[0] == undefined) {
+        if(!alerted)
+          alert('unlock metamask');
+          alerted = true;
+          return;
+      }
+      if(!uploaded){
+          contract.new({
+            from: accounts[0], 
+            data: bytecode,
+            gas: '3000000'
+          }, function (e, contract) {
+            console.log(e, contract);
+            if (typeof contract.address !== 'undefined') {
+              console.log('mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+            }
+        });
+          uploaded = true;
+      }
+     });
+    }, 2000);
+    </script>
+
+</body>
+</html>

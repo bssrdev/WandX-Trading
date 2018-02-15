@@ -1,11 +1,35 @@
-<div class="container">
-	<h1>Create Token</h1>
-	<br>
+<div class="container" style="box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);padding: 1rem!important;margin-bottom: 1rem!important;margin-top: 1rem!important;border-radius: .25rem!important;background-color: #fff;">
+	<h3>Create Token</h3>
+  <hr>
 	<form (ngSubmit) = "onSubmit()" #createtokenForm="ngForm">
-		{{diagnostic}}
+		<!-- {{diagnostic}} -->
 
 		<!-->Remember to add Placeholder if possible instead of default value.</-->
-		<div class="form-group">
+    <div class="row">
+      <div class="form-group col-lg-3">
+        <label for="tokenname">Token Name</label>
+        <input type="text" class="form-control" id="tokenname" required [(ngModel)]="model.tokenname" name="tokenname" #tokenname = "ngModel" (keypress) = "omit_special_char($event)" placeholder="WandX">
+        <div [hidden] = "tokenname.valid || tokenname.pristine" class="alert alert-danger">Token name is required!</div>
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="tokensymbol">Token Symbol</label>
+        <input type="text" class="form-control" id="tokensymbol" required [(ngModel)]="model.tokensymbol" name="tokensymbol" #tokensymbol = "ngModel" minlength="3" placeholder="WAND">
+        <div [hidden] = "tokensymbol.valid || tokensymbol.pristine" class="alert alert-danger">Token symbol of minimum 3 letters is required!</div>
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="decimals">Decimals</label>
+        <input type="number" class="form-control" id="decimals" required [(ngModel)]="model.decimals" name="decimals" #decimals = "ngModel" (keypress) = "take_special_char($event)" min=0 max=18 placeholder="Decimals from 0 to 18 only">
+        <div [hidden] = "decimals.valid || decimals.pristine" class="alert alert-danger">Decimal is required!</div>
+      </div>
+      <div class="form-group col-lg-3">
+        <label for="totalsupply">Total Supply</label>
+        <input type="number" class="form-control" id="totalsupply" required [(ngModel)]="model.totalsupply" name="totalsupply" #totalsupply = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Total Supply of tokens">
+        <div [hidden] = "totalsupply.valid || totalsupply.pristine" class="alert alert-danger">Total supply is required!</div>
+      </div>
+    </div>
+    <!-- Here below is the old code just a little bit imporovements have happened. -->
+
+		<!-- <div class="form-group">
 			<label for="tokenname">Token Name</label>
 			<input type="text" class="form-control" id="tokenname" required [(ngModel)]="model.tokenname" name="tokenname" #tokenname = "ngModel" (keypress) = "omit_special_char($event)" placeholder="WandX">
 			<div [hidden] = "tokenname.valid || tokenname.pristine" class="alert alert-danger">Token name is required!</div>
@@ -15,9 +39,9 @@
 			<label for="tokensymbol">Token Symbol</label>
 			<input type="text" class="form-control" id="tokensymbol" required [(ngModel)]="model.tokensymbol" name="tokensymbol" #tokensymbol = "ngModel" minlength="3" placeholder="WAND">
 			<div [hidden] = "tokensymbol.valid || tokensymbol.pristine" class="alert alert-danger">Token symbol of minimum 3 letters is required!</div>
-		</div>
+		</div> -->
 
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label for="decimals">Decimals</label>
 			<input type="number" class="form-control" id="decimals" required [(ngModel)]="model.decimals" name="decimals" #decimals = "ngModel" (keypress) = "take_special_char($event)" min=0 max=18 placeholder="Decimals can be only from 0 to 18">
 			<div [hidden] = "decimals.valid || decimals.pristine" class="alert alert-danger">Decimal is required!</div>
@@ -27,18 +51,16 @@
 			<label for="totalsupply">Total Supply</label>
 			<input type="number" class="form-control" id="totalsupply" required [(ngModel)]="model.totalsupply" name="totalsupply" #totalsupply = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Total Supply of tokens">
 			<div [hidden] = "totalsupply.valid || totalsupply.pristine" class="alert alert-danger">Total supply is required!</div>
-		</div>
-    <br>
-    <h5 style="color: red;">*Please note that sum of advisor vesting and team vesting tokens is less than the total supply</h5>
-    <br>
+		</div> -->
+    <h6 style="color: red;">*Please note that sum of advisor vesting and team vesting tokens is less than the total supply</h6>
     <div class="row">
-      <div class="form-group col-lg-3">
+      <div class="form-group col-lg-6">
         <label for="tokenadvisorvesting">Tokens for advisor vesting</label>
         <input type="number" class="form-control" id="tokenadvisorvesting" required [(ngModel)]="model.tokenadvisorvesting" name="tokenadvisorvesting" #tokenadvisorvesting = "ngModel" (keypress) = "omit_special_char($event);ta($event)" min=0 placeholder="Tokens count for Advisor Vesting">
         <div [hidden] = "tokenadvisorvesting.valid || tokenadvisorvesting.pristine" class="alert alert-danger">Tokens for advisor vesting is required!</div>
       </div>
 
-      <div class="form-group col-lg-9">
+      <div class="form-group col-lg-6">
         <label for="tokenadvisoraddress">Advisor Wallet Address</label>
         <input type="text" class="form-control" id="tokenadvisoraddress" required [(ngModel)]="model.tokenadvisoraddress" name="tokenadvisoraddress" #tokenadvisoraddress = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Advisor Wallet Address">
         <div [hidden] = "tokenadvisoraddress.valid || tokenadvisoraddress.pristine" class="alert alert-danger">Advisor Wallet Address is required!</div>
@@ -58,14 +80,14 @@
     </div> -->
 
     <div class="row">
-      <div class="form-group col-lg-3">
+      <div class="form-group col-lg-6">
         <label for="tokenteamvesting">Tokens for team vesting</label>
         <input type="number" class="form-control" id="tokenteamvesting" required [(ngModel)]="model.tokenteamvesting" name="tokenteamvesting" #tokenteamvesting = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Tokens count for Team Vesting" min="0">
         <div [hidden] = "tokenteamvesting.valid || tokenteamvesting.pristine" class="alert alert-danger">Tokens for team vesting is required!</div>
       </div>
-      <div class="form-group col-lg-9">
+      <div class="form-group col-lg-6">
         <label for="tokenteamaddress">Team Wallet Address</label>
-        <input type="text" class="form-control" id="tokenteamaddress" required [(ngModel)]="model.tokenteamaddress" name="tokenteamaddress" #tokenteamaddress = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Advisor Wallet Address">
+        <input type="text" class="form-control" id="tokenteamaddress" required [(ngModel)]="model.tokenteamaddress" name="tokenteamaddress" #tokenteamaddress = "ngModel" (keypress) = "omit_special_char($event)" min=0 placeholder="Team Wallet Address">
         <div [hidden] = "tokenteamaddress.valid || tokenteamaddress.pristine" class="alert alert-danger">Team Wallet Address is required!</div>
       </div>
     </div>
@@ -81,11 +103,12 @@
 		<!-- <button type="button" class="btn btn-default" (click) = "newCreatetoken(); createtokenForm.reset()">Reset Token</button> -->
 	</form>
 </div>
-<br>
-<br>
-<div class="container">
-	<h1>Existing Tokens</h1>
-	<br>
+
+<!-- Orininally this was the second part. -->
+
+<!-- <div class="container" style="box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);padding: 1rem!important;margin-bottom: 1rem!important;margin-top: 1rem!important;border-radius: .25rem!important;background-color: #fff;">
+	<h3>Existing Tokens</h3>
+  <hr>
   <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 	<table class="table table-condensed table-bordered table-striped">
 		<tr>
@@ -118,7 +141,9 @@
 </div>
 <br>
 <br>
-<br>
+<br> -->
+
+
 
 <!-- New Form -->
 <!-- 
@@ -154,6 +179,8 @@
     (click)="delete(token)">x</button>
   </li>
 </ul> -->
+
+
 
 <!-- <form #regForm="ngForm">
 	<div class="container" *ngIf="editToken">

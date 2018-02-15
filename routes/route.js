@@ -91,7 +91,7 @@ router.post('/createtoken',(req, res, next)=>{
         			fs.writeFile(abiFile, abiRaw, 'utf8', function (err){
         				if (err)
         					return console.log(err);
-        				res.render('createContract.ejs', {bytecode: bytecode, abi: abi, contract: result});
+        				res.render('./createContract.ejs', {bytecode: bytecode, abi: abi, contract: result});
         			});
         		});
 			});

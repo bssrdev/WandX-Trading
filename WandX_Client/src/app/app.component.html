@@ -1,68 +1,74 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul> -->
-
-<!-- <h1>{{title}}</h1>
-<h2>My favorite hero is: {{myHero}}</h2> -->
-
-<!-- <div class="container">
-  <h1>Reactive Forms</h1>
-</div> -->
-
-<!-- <app-singin></app-singin> -->
-
-<!-- <body>
-  <section>
-        <div class="header">
-            <img src="/assets/images/wandxlogo.png" alt="">
-            <div class="userName">
-                <div class="dropdown">
-                    <img class="dropbtn" onclick="myFunction() " src="/assets/images/user.jpg" alt="">
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#">Profile</a>
-                        <a href="faq.html">FAQ</a>
-                        <a href="#">Logout</a>
-                    </div>
-                </div>
-                <p>User Name</p>
-            </div>
-            <div>
-        <ul>
-          <li><a routerLink="createtoken">Create Token</a></li>
-          <li><a routerLink="tokentrade">Token Trade</a></li>
-        </ul>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-dark" style="margin-bottom:10px; background-color: #343a40;">
+  <div class="container">
+    <a class="navbar-brand navbar-dark" href="#"><img src="/assets/wandx.png" width="30" height="30" class="d-inline-block align-top" alt=""> WandX</a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sing In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sing Up</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+          </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-    </section>
-</body> -->
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<!-- <div>
-  <ul>
-    <li><a routerLink="createtoken">Create Token</a></li>
-    <li><a routerLink="tokentrade">Token Trade</a></li>
+<!-- My Code for displaying the Nav Bar -->
+
+<div class="container" style="padding: 0px;">
+  <ul class="nav nav-tabs" style="margin-bottom: 20px;margin-top: 20px;">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="createtoken">Create Token</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="existingtokens">Existing Tokens</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="tokentrade">Token Trade</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled">Status</a>
+    </li>
   </ul>
 </div>
- -->
 
-<!-- <app-header></app-header>
-<app-homepage></app-homepage> -->
-<app-createtoken></app-createtoken>
+<footer class="footer" style="position: fixed;left:0px;bottom:0px;height:60px;width:100%;line-height: 60px;background:#dbdbdb82;">
+  <div class="container">
+    <a class="logo-font">WandX</a>
+    <span class="attribution">
+      &copy; {{ today | date: 'yyyy' }}.
+      An interactive learning project from <a href="https://www.wandx.co/">WandX</a>
+      <a href="https://www.wandx.co/privacy-policy.html">|  Privacy Policy</a>
+      <a href="https://www.wandx.co/terms-of-use.html">|  Terms and Conditions</a>
+    </span>
+  </div>
+</footer>
+
+
+
+
+
+<!-- <app-header></app-header> -->
+<!-- <app-homepage></app-homepage> -->
+<!-- <app-createtoken></app-createtoken> -->
+<!-- <app-existingtokens></app-existingtokens> -->
 <!-- <app-footer></app-footer> -->
 <!-- <app-tokentrade></app-tokentrade> -->
 <!-- <app-crowdsale></app-crowdsale> -->

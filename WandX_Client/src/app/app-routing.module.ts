@@ -3,18 +3,24 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CreatetokenComponent } from './createtoken/createtoken.component'; 
 import { TokentradeComponent } from './tokentrade/tokentrade.component';
+import { ExistingtokensComponent } from './existingtokens/existingtokens.component'; 
 
 
 const routes: Routes = [
-// {
-// 	path:'createtoken',
-// 	component: CreatetokenComponent
-// },
+{
+	path:'createtoken',
+	component: CreatetokenComponent
+},
 
-// {
-// 	path:'tokentrade',
-// 	component: TokentradeComponent
-// }
+{
+	path:'existingtokens',
+	component: ExistingtokensComponent
+},
+
+{
+	path:'tokentrade',
+	component: TokentradeComponent
+}
 
 ];
 

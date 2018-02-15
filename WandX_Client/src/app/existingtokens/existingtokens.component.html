@@ -1,0 +1,36 @@
+<div class="container" style="box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);padding: 1rem!important;margin-bottom: 1rem!important;margin-top: 1rem!important;border-radius: .25rem!important;background-color: #fff;">
+	<h3>Existing Tokens</h3>
+  <hr>
+  <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+	<table class="table table-condensed table-bordered table-striped">
+		<tr>
+      		<th>Token Name</th>
+      		<th>Token Symbol</th>
+      		<th>Decimals</th>
+      		<th>Total Supply</th>
+      		<th>Token Advisor Vesting</th>
+      		<th>Token Team Vesting</th>
+      		<th>Delete Token</th>
+   		</tr>
+		<tr *ngFor="let token of tokens">
+        	<td align="center">
+            	{{ token.tokenname }}</td>
+        	<td align="center">
+            	{{ token.tokensymbol }}</td>
+          <td align="center">
+            	{{ token.decimals }}</td>
+          <td align="center">
+            	{{ token.totalsupply }}</td>
+          <td align="center">
+            	{{ token.tokenadvisorvesting }}</td>
+          <td align="center">
+            	{{ token.tokenteamvesting }}</td>
+          <td align="center">
+            	<button type="button" class="btn btn-danger" (click)="delete(token)" align="center">Delete</button>
+          </td>
+    	</tr>
+	</table>
+</div>
+<br>
+<br>
+<br>

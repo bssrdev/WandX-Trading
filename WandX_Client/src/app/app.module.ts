@@ -25,6 +25,7 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { ExistingtokensComponent } from './existingtokens/existingtokens.component';
 
 
 
@@ -59,7 +60,8 @@ export function getAuthServiceConfigs() {
     LoadingSpinnerComponent,
     HeaderComponent,
     FooterComponent,
-    HomepageComponent
+    HomepageComponent,
+    ExistingtokensComponent
   ],
   imports: [
     BrowserModule,
