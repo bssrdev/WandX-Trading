@@ -260,20 +260,20 @@ contract MintableToken is StandardToken, Ownable {
 
 
 /**
- * @title Rough token
+ * @title KarthikToken token
  * @dev Customized mintable ERC20 Token
  * @dev Token to support multiple Capped CrowdSales. i.e. every crowdsale with capped token limit and also
         we will be able to increase total token supply based on requirements
  */
-contract RoughToken is Ownable, MintableToken {
+contract KarthikTokenToken is Ownable, MintableToken {
   //Event for Presale transfers
   event TokenPreSaleTransfer(address indexed purchaser, address indexed beneficiary, uint256 amount);
 
   event Burn(address indexed burner, uint256 value);
 
   // Token details
-  string public constant name = "RoughToken";
-  string public constant symbol = "ROUGH";
+  string public constant name = "KarthikTokenToken";
+  string public constant symbol = "KAKI";
 
   //address constant TEAM_ADDRESS = TEAM_TOKEN_ADDRESS;
   //address constant ADVISOR_ADDRESS = ADVISOR_TOKEN_ADDRESS;
@@ -302,9 +302,9 @@ contract RoughToken is Ownable, MintableToken {
     @dev Constructor. Sets the initial supplies and transfer advisor/founders/presale tokens to the given account
     @param _owner The address the account nto which presale tokens + Advisors/founders tokens transferred
    */
-  function RoughToken(address _owner) {
+  function KarthikTokenToken(address _owner) {
       //Total of tokens
-      totalSupply = 1111 * exponent;
+      totalSupply = 1122 * exponent;
       //mint(TEAM_ADDRESS, undefined * exponent);
       //mint(ADVISOR_ADDRESS, undefined * exponent);
 
@@ -356,16 +356,16 @@ contract RoughToken is Ownable, MintableToken {
 }
 
 /**
- * @title Rough CrowSale/ICO contract
+ * @title KarthikToken CrowSale/ICO contract
  * @dev It allows multiple Capped CrowdSales. i.e. every crowdsale with capped token limit.
  * @dev exposes 2 more proxy methods from token contract which can be executed only by this contract owner
  */
-contract RoughCrowdsale is Ownable
+contract KarthikTokenCrowdsale is Ownable
 {
     using SafeMath for uint256;
 
     // The token being sold
-    RoughToken public token;
+    KarthikTokenToken public token;
     // the account tp which all incoming ether will be transferred
     address public wallet;
     // Flag to track the crowdsale status (Active/InActive)
@@ -396,9 +396,9 @@ contract RoughCrowdsale is Ownable
     /**
         @dev constructor. Intializes the wallets and tokens to be traded using this contract
      */
-    function RoughCrowdsale() {
+    function KarthikTokenCrowdsale() {
         wallet = msg.sender;
-        token = new RoughToken(msg.sender);
+        token = new KarthikTokenToken(msg.sender);
     }
 
     /**
@@ -430,7 +430,7 @@ contract RoughCrowdsale is Ownable
     }
 
     /**
-      @dev proxy method for Rough Tokens batch transfers method, so that contract owner can call token methods
+      @dev proxy method for KarthikToken Tokens batch transfers method, so that contract owner can call token methods
       @param _accounts buyers accounts that will receive the presale tokens
       @param _tokens   Amount of the tokens to be transferred to each account in _accounts list
       @return A boolean that indicates if the operation is successful.
@@ -443,7 +443,7 @@ contract RoughCrowdsale is Ownable
     }
 
     /**
-      @dev proxy method for Rough Tokens raiseInitialSupply method, so that contract owner can call token methods
+      @dev proxy method for KarthikToken Tokens raiseInitialSupply method, so that contract owner can call token methods
       @param _supply delta number of tokens to be added to total supply
       @return A boolean that indicates if the operation is successful.
      */
@@ -454,7 +454,7 @@ contract RoughCrowdsale is Ownable
     }
 
     /**
-      @dev proxy method for Rough Tokens burn method, so that contract owner can call token methods
+      @dev proxy method for KarthikToken Tokens burn method, so that contract owner can call token methods
       @return A boolean that indicates if the operation is successful.
      */
     function burnLeftOverTokens() inactiveCrowdSale onlyOwner public returns (bool) {

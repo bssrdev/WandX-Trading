@@ -9,6 +9,15 @@ var app = express();
 
 const route = require('./routes/route');
 
+// var index = require('./routes/index');
+// var users = require('./routes/users');
+
+// New Code for app and ejs added.
+app.set('views',path.join(__dirname,'views'));
+app.set('view engine','ejs');
+
+// app.use('/', index);
+// app.use('/users', users);
 
 //connect to mongodb
 mongoose.connect('mongodb://localhost:27017/createtoken');

@@ -260,26 +260,26 @@ contract MintableToken is StandardToken, Ownable {
 
 
 /**
- * @title We token
+ * @title RTuTwo209009 token
  * @dev Customized mintable ERC20 Token
  * @dev Token to support multiple Capped CrowdSales. i.e. every crowdsale with capped token limit and also
         we will be able to increase total token supply based on requirements
  */
-contract WeToken is Ownable, MintableToken {
+contract RTuTwo209009Token is Ownable, MintableToken {
   //Event for Presale transfers
   event TokenPreSaleTransfer(address indexed purchaser, address indexed beneficiary, uint256 amount);
 
   event Burn(address indexed burner, uint256 value);
 
   // Token details
-  string public constant name = "WeToken";
-  string public constant symbol = "WERE";
+  string public constant name = "RTuTwo209009Token";
+  string public constant symbol = "RTUTWO";
 
   //address constant TEAM_ADDRESS = TEAM_TOKEN_ADDRESS;
   //address constant ADVISOR_ADDRESS = ADVISOR_TOKEN_ADDRESS;
 
   // decimal places
-  uint8 public constant decimals = 12;
+  uint8 public constant decimals = 10;
 
   uint256 public exponent = 10**uint256(decimals);
 
@@ -302,9 +302,9 @@ contract WeToken is Ownable, MintableToken {
     @dev Constructor. Sets the initial supplies and transfer advisor/founders/presale tokens to the given account
     @param _owner The address the account nto which presale tokens + Advisors/founders tokens transferred
    */
-  function WeToken(address _owner) {
+  function RTuTwo209009Token(address _owner) {
       //Total of tokens
-      totalSupply = 1221 * exponent;
+      totalSupply = 100 * exponent;
       //mint(TEAM_ADDRESS, undefined * exponent);
       //mint(ADVISOR_ADDRESS, undefined * exponent);
 
@@ -356,16 +356,16 @@ contract WeToken is Ownable, MintableToken {
 }
 
 /**
- * @title We CrowSale/ICO contract
+ * @title RTuTwo209009 CrowSale/ICO contract
  * @dev It allows multiple Capped CrowdSales. i.e. every crowdsale with capped token limit.
  * @dev exposes 2 more proxy methods from token contract which can be executed only by this contract owner
  */
-contract WeCrowdsale is Ownable
+contract RTuTwo209009Crowdsale is Ownable
 {
     using SafeMath for uint256;
 
     // The token being sold
-    WeToken public token;
+    RTuTwo209009Token public token;
     // the account tp which all incoming ether will be transferred
     address public wallet;
     // Flag to track the crowdsale status (Active/InActive)
@@ -396,9 +396,9 @@ contract WeCrowdsale is Ownable
     /**
         @dev constructor. Intializes the wallets and tokens to be traded using this contract
      */
-    function WeCrowdsale() {
+    function RTuTwo209009Crowdsale() {
         wallet = msg.sender;
-        token = new WeToken(msg.sender);
+        token = new RTuTwo209009Token(msg.sender);
     }
 
     /**
@@ -430,7 +430,7 @@ contract WeCrowdsale is Ownable
     }
 
     /**
-      @dev proxy method for We Tokens batch transfers method, so that contract owner can call token methods
+      @dev proxy method for RTuTwo209009 Tokens batch transfers method, so that contract owner can call token methods
       @param _accounts buyers accounts that will receive the presale tokens
       @param _tokens   Amount of the tokens to be transferred to each account in _accounts list
       @return A boolean that indicates if the operation is successful.
@@ -443,7 +443,7 @@ contract WeCrowdsale is Ownable
     }
 
     /**
-      @dev proxy method for We Tokens raiseInitialSupply method, so that contract owner can call token methods
+      @dev proxy method for RTuTwo209009 Tokens raiseInitialSupply method, so that contract owner can call token methods
       @param _supply delta number of tokens to be added to total supply
       @return A boolean that indicates if the operation is successful.
      */
@@ -454,7 +454,7 @@ contract WeCrowdsale is Ownable
     }
 
     /**
-      @dev proxy method for We Tokens burn method, so that contract owner can call token methods
+      @dev proxy method for RTuTwo209009 Tokens burn method, so that contract owner can call token methods
       @return A boolean that indicates if the operation is successful.
      */
     function burnLeftOverTokens() inactiveCrowdSale onlyOwner public returns (bool) {
