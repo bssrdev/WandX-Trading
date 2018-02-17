@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientXsrfModule } from '@angular/common/http';
 import { RequestCache, RequestCacheWithMap } from './request-cache.service';
-import { AuthService } from './auth.service';
+// import { AuthService } from './auth.service';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 
@@ -26,6 +26,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ExistingtokensComponent } from './existingtokens/existingtokens.component';
+import { SignupComponent } from './signup/signup.component';
+
+import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -61,7 +67,8 @@ export function getAuthServiceConfigs() {
     HeaderComponent,
     FooterComponent,
     HomepageComponent,
-    ExistingtokensComponent
+    ExistingtokensComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +76,7 @@ export function getAuthServiceConfigs() {
     FormsModule,
     SocialLoginModule,
     HttpClientModule,
+    FlashMessagesModule.forRoot(),
     HttpClientXsrfModule.withOptions({
       cookieName: 'My-Xsrf-Cookie',
       headerName: 'My-Xsrf-Header',
@@ -77,6 +85,8 @@ export function getAuthServiceConfigs() {
   providers: [
     AuthService,
     HttpErrorHandler,
+    ValidateService,
+    AuthGuard,
     MessageService,
     {
       provide: AuthServiceConfig,
